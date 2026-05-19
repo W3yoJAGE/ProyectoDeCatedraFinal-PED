@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SistemaInventarioPedModelStoreContainer" CdmEntityContainer="SistemaInventarioPedEntities">
+    <EntitySetMapping Name="Categorias">
+      <EntityTypeMapping TypeName="SistemaInventarioPedModel.Categorias">
+        <MappingFragment StoreEntitySet="Categorias">
+          <ScalarProperty Name="ID_Categoria" ColumnName="ID_Categoria" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleVentas">
+      <EntityTypeMapping TypeName="SistemaInventarioPedModel.DetalleVentas">
+        <MappingFragment StoreEntitySet="DetalleVentas">
+          <ScalarProperty Name="ID_DetalleVenta" ColumnName="ID_DetalleVenta" />
+          <ScalarProperty Name="ID_Venta" ColumnName="ID_Venta" />
+          <ScalarProperty Name="ID_Producto" ColumnName="ID_Producto" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="PrecioUnitarioVenta" ColumnName="PrecioUnitarioVenta" />
+          <ScalarProperty Name="Subtotal" ColumnName="Subtotal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ofertas">
+      <EntityTypeMapping TypeName="SistemaInventarioPedModel.Ofertas">
+        <MappingFragment StoreEntitySet="Ofertas">
+          <ScalarProperty Name="ID_Oferta" ColumnName="ID_Oferta" />
+          <ScalarProperty Name="ID_Producto" ColumnName="ID_Producto" />
+          <ScalarProperty Name="PorcentajeDescuento" ColumnName="PorcentajeDescuento" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Prioridad" ColumnName="Prioridad" />
+          <ScalarProperty Name="Activa" ColumnName="Activa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Productos">
+      <EntityTypeMapping TypeName="SistemaInventarioPedModel.Productos">
+        <MappingFragment StoreEntitySet="Productos">
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="ID_Producto" ColumnName="ID_Producto" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="ID_Categoria" ColumnName="ID_Categoria" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Stock" ColumnName="Stock" />
+          <ScalarProperty Name="RutaImagen" ColumnName="RutaImagen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ventas">
+      <EntityTypeMapping TypeName="SistemaInventarioPedModel.Ventas">
+        <MappingFragment StoreEntitySet="Ventas">
+          <ScalarProperty Name="ID_Venta" ColumnName="ID_Venta" />
+          <ScalarProperty Name="FechaHora" ColumnName="FechaHora" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_CatalogoProductos">
+      <EntityTypeMapping TypeName="SistemaInventarioPedModel.vw_CatalogoProductos">
+        <MappingFragment StoreEntitySet="vw_CatalogoProductos">
+          <ScalarProperty Name="RutaImagen" ColumnName="RutaImagen" />
+          <ScalarProperty Name="Stock" ColumnName="Stock" />
+          <ScalarProperty Name="Prioridad" ColumnName="Prioridad" />
+          <ScalarProperty Name="OfertaDescripcion" ColumnName="OfertaDescripcion" />
+          <ScalarProperty Name="PrecioFinal" ColumnName="PrecioFinal" />
+          <ScalarProperty Name="PorcentajeDescuento" ColumnName="PorcentajeDescuento" />
+          <ScalarProperty Name="PrecioOriginal" ColumnName="PrecioOriginal" />
+          <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="ID_Producto" ColumnName="ID_Producto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

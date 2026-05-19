@@ -1,0 +1,431 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SistemaInventarioPedModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Categorias">
+          <Key>
+            <PropertyRef Name="ID_Categoria" />
+          </Key>
+          <Property Name="ID_Categoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DetalleVentas">
+          <Key>
+            <PropertyRef Name="ID_DetalleVenta" />
+          </Key>
+          <Property Name="ID_DetalleVenta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Venta" Type="int" Nullable="false" />
+          <Property Name="ID_Producto" Type="int" Nullable="false" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+          <Property Name="PrecioUnitarioVenta" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Subtotal" Type="decimal" Precision="21" Scale="2" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Ofertas">
+          <Key>
+            <PropertyRef Name="ID_Oferta" />
+          </Key>
+          <Property Name="ID_Oferta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Producto" Type="int" Nullable="false" />
+          <Property Name="PorcentajeDescuento" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="250" />
+          <Property Name="Prioridad" Type="int" Nullable="false" />
+          <Property Name="Activa" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Productos">
+          <Key>
+            <PropertyRef Name="ID_Producto" />
+          </Key>
+          <Property Name="ID_Producto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="ID_Categoria" Type="int" Nullable="false" />
+          <Property Name="Precio" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Stock" Type="int" Nullable="false" />
+          <Property Name="RutaImagen" Type="varchar" MaxLength="300" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ventas">
+          <Key>
+            <PropertyRef Name="ID_Venta" />
+          </Key>
+          <Property Name="ID_Venta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechaHora" Type="datetime" Nullable="false" />
+          <Property Name="Total" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'SistemaInventarioPed.dbo.vw_CatalogoProductos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vw_CatalogoProductos">
+          <Key>
+            <PropertyRef Name="ID_Producto" />
+            <PropertyRef Name="Codigo" />
+            <PropertyRef Name="Nombre" />
+            <PropertyRef Name="Categoria" />
+            <PropertyRef Name="PrecioOriginal" />
+            <PropertyRef Name="Stock" />
+          </Key>
+          <Property Name="ID_Producto" Type="int" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Categoria" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PrecioOriginal" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="PorcentajeDescuento" Type="int" />
+          <Property Name="PrecioFinal" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="OfertaDescripcion" Type="varchar" MaxLength="250" />
+          <Property Name="Prioridad" Type="int" />
+          <Property Name="Stock" Type="int" Nullable="false" />
+          <Property Name="RutaImagen" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <Association Name="FK_DetalleVentas_Productos">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
+          <End Role="DetalleVentas" Type="Self.DetalleVentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="ID_Producto" />
+            </Principal>
+            <Dependent Role="DetalleVentas">
+              <PropertyRef Name="ID_Producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetalleVentas_Ventas">
+          <End Role="Ventas" Type="Self.Ventas" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DetalleVentas" Type="Self.DetalleVentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ventas">
+              <PropertyRef Name="ID_Venta" />
+            </Principal>
+            <Dependent Role="DetalleVentas">
+              <PropertyRef Name="ID_Venta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ofertas_Productos">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Ofertas" Type="Self.Ofertas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="ID_Producto" />
+            </Principal>
+            <Dependent Role="Ofertas">
+              <PropertyRef Name="ID_Producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Productos_Categorias">
+          <End Role="Categorias" Type="Self.Categorias" Multiplicity="1" />
+          <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorias">
+              <PropertyRef Name="ID_Categoria" />
+            </Principal>
+            <Dependent Role="Productos">
+              <PropertyRef Name="ID_Categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SistemaInventarioPedModelStoreContainer">
+          <EntitySet Name="Categorias" EntityType="Self.Categorias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetalleVentas" EntityType="Self.DetalleVentas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ofertas" EntityType="Self.Ofertas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ventas" EntityType="Self.Ventas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vw_CatalogoProductos" EntityType="Self.vw_CatalogoProductos" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_CatalogoProductos].[ID_Producto] AS [ID_Producto], 
+    [vw_CatalogoProductos].[Codigo] AS [Codigo], 
+    [vw_CatalogoProductos].[Nombre] AS [Nombre], 
+    [vw_CatalogoProductos].[Categoria] AS [Categoria], 
+    [vw_CatalogoProductos].[PrecioOriginal] AS [PrecioOriginal], 
+    [vw_CatalogoProductos].[PorcentajeDescuento] AS [PorcentajeDescuento], 
+    [vw_CatalogoProductos].[PrecioFinal] AS [PrecioFinal], 
+    [vw_CatalogoProductos].[OfertaDescripcion] AS [OfertaDescripcion], 
+    [vw_CatalogoProductos].[Prioridad] AS [Prioridad], 
+    [vw_CatalogoProductos].[Stock] AS [Stock], 
+    [vw_CatalogoProductos].[RutaImagen] AS [RutaImagen]
+    FROM [dbo].[vw_CatalogoProductos] AS [vw_CatalogoProductos]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_DetalleVentas_Productos" Association="Self.FK_DetalleVentas_Productos">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="DetalleVentas" EntitySet="DetalleVentas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetalleVentas_Ventas" Association="Self.FK_DetalleVentas_Ventas">
+            <End Role="Ventas" EntitySet="Ventas" />
+            <End Role="DetalleVentas" EntitySet="DetalleVentas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ofertas_Productos" Association="Self.FK_Ofertas_Productos">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="Ofertas" EntitySet="Ofertas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Productos_Categorias" Association="Self.FK_Productos_Categorias">
+            <End Role="Categorias" EntitySet="Categorias" />
+            <End Role="Productos" EntitySet="Productos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SistemaInventarioPedModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Categorias">
+          <Key>
+            <PropertyRef Name="ID_Categoria" />
+          </Key>
+          <Property Name="ID_Categoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Productos" Relationship="Self.FK_Productos_Categorias" FromRole="Categorias" ToRole="Productos" />
+        </EntityType>
+        <EntityType Name="DetalleVentas">
+          <Key>
+            <PropertyRef Name="ID_DetalleVenta" />
+          </Key>
+          <Property Name="ID_DetalleVenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Venta" Type="Int32" Nullable="false" />
+          <Property Name="ID_Producto" Type="Int32" Nullable="false" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="PrecioUnitarioVenta" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Subtotal" Type="Decimal" Precision="21" Scale="2" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Productos" Relationship="Self.FK_DetalleVentas_Productos" FromRole="DetalleVentas" ToRole="Productos" />
+          <NavigationProperty Name="Ventas" Relationship="Self.FK_DetalleVentas_Ventas" FromRole="DetalleVentas" ToRole="Ventas" />
+        </EntityType>
+        <EntityType Name="Ofertas">
+          <Key>
+            <PropertyRef Name="ID_Oferta" />
+          </Key>
+          <Property Name="ID_Oferta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Producto" Type="Int32" Nullable="false" />
+          <Property Name="PorcentajeDescuento" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Prioridad" Type="Int32" Nullable="false" />
+          <Property Name="Activa" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Productos" Relationship="Self.FK_Ofertas_Productos" FromRole="Ofertas" ToRole="Productos" />
+        </EntityType>
+        <EntityType Name="Productos">
+          <Key>
+            <PropertyRef Name="ID_Producto" />
+          </Key>
+          <Property Name="ID_Producto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_Categoria" Type="Int32" Nullable="false" />
+          <Property Name="Precio" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Stock" Type="Int32" Nullable="false" />
+          <Property Name="RutaImagen" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Categorias" Relationship="Self.FK_Productos_Categorias" FromRole="Productos" ToRole="Categorias" />
+          <NavigationProperty Name="DetalleVentas" Relationship="Self.FK_DetalleVentas_Productos" FromRole="Productos" ToRole="DetalleVentas" />
+          <NavigationProperty Name="Ofertas" Relationship="Self.FK_Ofertas_Productos" FromRole="Productos" ToRole="Ofertas" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ventas">
+          <Key>
+            <PropertyRef Name="ID_Venta" />
+          </Key>
+          <Property Name="ID_Venta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaHora" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Total" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="DetalleVentas" Relationship="Self.FK_DetalleVentas_Ventas" FromRole="Ventas" ToRole="DetalleVentas" />
+        </EntityType>
+        <Association Name="FK_Productos_Categorias">
+          <End Role="Categorias" Type="Self.Categorias" Multiplicity="1" />
+          <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorias">
+              <PropertyRef Name="ID_Categoria" />
+            </Principal>
+            <Dependent Role="Productos">
+              <PropertyRef Name="ID_Categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetalleVentas_Productos">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
+          <End Role="DetalleVentas" Type="Self.DetalleVentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="ID_Producto" />
+            </Principal>
+            <Dependent Role="DetalleVentas">
+              <PropertyRef Name="ID_Producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetalleVentas_Ventas">
+          <End Role="Ventas" Type="Self.Ventas" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DetalleVentas" Type="Self.DetalleVentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ventas">
+              <PropertyRef Name="ID_Venta" />
+            </Principal>
+            <Dependent Role="DetalleVentas">
+              <PropertyRef Name="ID_Venta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ofertas_Productos">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Ofertas" Type="Self.Ofertas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="ID_Producto" />
+            </Principal>
+            <Dependent Role="Ofertas">
+              <PropertyRef Name="ID_Producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SistemaInventarioPedEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categorias" EntityType="Self.Categorias" />
+          <EntitySet Name="DetalleVentas" EntityType="Self.DetalleVentas" />
+          <EntitySet Name="Ofertas" EntityType="Self.Ofertas" />
+          <EntitySet Name="Productos" EntityType="Self.Productos" />
+          <EntitySet Name="Ventas" EntityType="Self.Ventas" />
+          <AssociationSet Name="FK_Productos_Categorias" Association="Self.FK_Productos_Categorias">
+            <End Role="Categorias" EntitySet="Categorias" />
+            <End Role="Productos" EntitySet="Productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetalleVentas_Productos" Association="Self.FK_DetalleVentas_Productos">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="DetalleVentas" EntitySet="DetalleVentas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetalleVentas_Ventas" Association="Self.FK_DetalleVentas_Ventas">
+            <End Role="Ventas" EntitySet="Ventas" />
+            <End Role="DetalleVentas" EntitySet="DetalleVentas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ofertas_Productos" Association="Self.FK_Ofertas_Productos">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="Ofertas" EntitySet="Ofertas" />
+          </AssociationSet>
+          <EntitySet Name="vw_CatalogoProductos" EntityType="SistemaInventarioPedModel.vw_CatalogoProductos" />
+        </EntityContainer>
+        <EntityType Name="vw_CatalogoProductos">
+          <Key>
+            <PropertyRef Name="ID_Producto" />
+            <PropertyRef Name="Codigo" />
+            <PropertyRef Name="Nombre" />
+            <PropertyRef Name="Categoria" />
+            <PropertyRef Name="PrecioOriginal" />
+            <PropertyRef Name="Stock" />
+          </Key>
+          <Property Name="ID_Producto" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Categoria" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PrecioOriginal" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="PorcentajeDescuento" Type="Int32" />
+          <Property Name="PrecioFinal" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="OfertaDescripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Prioridad" Type="Int32" />
+          <Property Name="Stock" Type="Int32" Nullable="false" />
+          <Property Name="RutaImagen" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SistemaInventarioPedModelStoreContainer" CdmEntityContainer="SistemaInventarioPedEntities">
+          <EntitySetMapping Name="Categorias">
+            <EntityTypeMapping TypeName="SistemaInventarioPedModel.Categorias">
+              <MappingFragment StoreEntitySet="Categorias">
+                <ScalarProperty Name="ID_Categoria" ColumnName="ID_Categoria" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetalleVentas">
+            <EntityTypeMapping TypeName="SistemaInventarioPedModel.DetalleVentas">
+              <MappingFragment StoreEntitySet="DetalleVentas">
+                <ScalarProperty Name="ID_DetalleVenta" ColumnName="ID_DetalleVenta" />
+                <ScalarProperty Name="ID_Venta" ColumnName="ID_Venta" />
+                <ScalarProperty Name="ID_Producto" ColumnName="ID_Producto" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="PrecioUnitarioVenta" ColumnName="PrecioUnitarioVenta" />
+                <ScalarProperty Name="Subtotal" ColumnName="Subtotal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ofertas">
+            <EntityTypeMapping TypeName="SistemaInventarioPedModel.Ofertas">
+              <MappingFragment StoreEntitySet="Ofertas">
+                <ScalarProperty Name="ID_Oferta" ColumnName="ID_Oferta" />
+                <ScalarProperty Name="ID_Producto" ColumnName="ID_Producto" />
+                <ScalarProperty Name="PorcentajeDescuento" ColumnName="PorcentajeDescuento" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Prioridad" ColumnName="Prioridad" />
+                <ScalarProperty Name="Activa" ColumnName="Activa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Productos">
+            <EntityTypeMapping TypeName="SistemaInventarioPedModel.Productos">
+              <MappingFragment StoreEntitySet="Productos">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="ID_Producto" ColumnName="ID_Producto" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ID_Categoria" ColumnName="ID_Categoria" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="RutaImagen" ColumnName="RutaImagen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ventas">
+            <EntityTypeMapping TypeName="SistemaInventarioPedModel.Ventas">
+              <MappingFragment StoreEntitySet="Ventas">
+                <ScalarProperty Name="ID_Venta" ColumnName="ID_Venta" />
+                <ScalarProperty Name="FechaHora" ColumnName="FechaHora" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_CatalogoProductos">
+            <EntityTypeMapping TypeName="SistemaInventarioPedModel.vw_CatalogoProductos">
+              <MappingFragment StoreEntitySet="vw_CatalogoProductos">
+                <ScalarProperty Name="RutaImagen" ColumnName="RutaImagen" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="Prioridad" ColumnName="Prioridad" />
+                <ScalarProperty Name="OfertaDescripcion" ColumnName="OfertaDescripcion" />
+                <ScalarProperty Name="PrecioFinal" ColumnName="PrecioFinal" />
+                <ScalarProperty Name="PorcentajeDescuento" ColumnName="PorcentajeDescuento" />
+                <ScalarProperty Name="PrecioOriginal" ColumnName="PrecioOriginal" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="ID_Producto" ColumnName="ID_Producto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

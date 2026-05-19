@@ -1,0 +1,119 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\ProyectoCatedraPED-SistemaInventario\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{FE4D4349-B15C-4C88-8B1C-8ECE0FA99AE5}|ProyectoCatedraPED-SistemaInventario\\ProyectoCatedraPED-SistemaInventario.csproj|D:\\ProyectoCatedraPED-SistemaInventario\\proyectocatedraped-sistemainventario\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{FE4D4349-B15C-4C88-8B1C-8ECE0FA99AE5}|ProyectoCatedraPED-SistemaInventario\\ProyectoCatedraPED-SistemaInventario.csproj|solutionrelative:proyectocatedraped-sistemainventario\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE4D4349-B15C-4C88-8B1C-8ECE0FA99AE5}|ProyectoCatedraPED-SistemaInventario\\ProyectoCatedraPED-SistemaInventario.csproj|d:\\proyectocatedraped-sistemainventario\\proyectocatedraped-sistemainventario\\inventario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{FE4D4349-B15C-4C88-8B1C-8ECE0FA99AE5}|ProyectoCatedraPED-SistemaInventario\\ProyectoCatedraPED-SistemaInventario.csproj|solutionrelative:proyectocatedraped-sistemainventario\\inventario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE4D4349-B15C-4C88-8B1C-8ECE0FA99AE5}|ProyectoCatedraPED-SistemaInventario\\ProyectoCatedraPED-SistemaInventario.csproj|d:\\proyectocatedraped-sistemainventario\\proyectocatedraped-sistemainventario\\inventario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE4D4349-B15C-4C88-8B1C-8ECE0FA99AE5}|ProyectoCatedraPED-SistemaInventario\\ProyectoCatedraPED-SistemaInventario.csproj|solutionrelative:proyectocatedraped-sistemainventario\\inventario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE4D4349-B15C-4C88-8B1C-8ECE0FA99AE5}|ProyectoCatedraPED-SistemaInventario\\ProyectoCatedraPED-SistemaInventario.csproj|d:\\proyectocatedraped-sistemainventario\\proyectocatedraped-sistemainventario\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE4D4349-B15C-4C88-8B1C-8ECE0FA99AE5}|ProyectoCatedraPED-SistemaInventario\\ProyectoCatedraPED-SistemaInventario.csproj|solutionrelative:proyectocatedraped-sistemainventario\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE4D4349-B15C-4C88-8B1C-8ECE0FA99AE5}|ProyectoCatedraPED-SistemaInventario\\ProyectoCatedraPED-SistemaInventario.csproj|D:\\ProyectoCatedraPED-SistemaInventario\\proyectocatedraped-sistemainventario\\redondeadodeformularioybotones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE4D4349-B15C-4C88-8B1C-8ECE0FA99AE5}|ProyectoCatedraPED-SistemaInventario\\ProyectoCatedraPED-SistemaInventario.csproj|solutionrelative:proyectocatedraped-sistemainventario\\redondeadodeformularioybotones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|d:\\ProyectoSigma\\proyectoPOO\\proyectoPOO\\Inventario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 663,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Inventario.cs",
+              "DocumentMoniker": "D:\\ProyectoCatedraPED-SistemaInventario\\ProyectoCatedraPED-SistemaInventario\\Inventario.cs",
+              "RelativeDocumentMoniker": "ProyectoCatedraPED-SistemaInventario\\Inventario.cs",
+              "ToolTip": "D:\\ProyectoCatedraPED-SistemaInventario\\ProyectoCatedraPED-SistemaInventario\\Inventario.cs",
+              "RelativeToolTip": "ProyectoCatedraPED-SistemaInventario\\Inventario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-08T17:52:04.431Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "D:\\ProyectoCatedraPED-SistemaInventario\\ProyectoCatedraPED-SistemaInventario\\Form1.cs",
+              "RelativeDocumentMoniker": "ProyectoCatedraPED-SistemaInventario\\Form1.cs",
+              "ToolTip": "D:\\ProyectoCatedraPED-SistemaInventario\\ProyectoCatedraPED-SistemaInventario\\Form1.cs [Design]*",
+              "RelativeToolTip": "ProyectoCatedraPED-SistemaInventario\\Form1.cs [Design]*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-08T16:36:56.34Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Inventario.cs [Design]",
+              "DocumentMoniker": "D:\\ProyectoCatedraPED-SistemaInventario\\ProyectoCatedraPED-SistemaInventario\\Inventario.cs",
+              "RelativeDocumentMoniker": "ProyectoCatedraPED-SistemaInventario\\Inventario.cs",
+              "ToolTip": "D:\\ProyectoCatedraPED-SistemaInventario\\ProyectoCatedraPED-SistemaInventario\\Inventario.cs [Design]",
+              "RelativeToolTip": "ProyectoCatedraPED-SistemaInventario\\Inventario.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-08T16:57:52.841Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Inventario.cs",
+              "DocumentMoniker": "d:\\ProyectoSigma\\proyectoPOO\\proyectoPOO\\Inventario.cs",
+              "RelativeDocumentMoniker": "..\\ProyectoSigma\\proyectoPOO\\proyectoPOO\\Inventario.cs",
+              "ToolTip": "d:\\ProyectoSigma\\proyectoPOO\\proyectoPOO\\Inventario.cs",
+              "RelativeToolTip": "..\\ProyectoSigma\\proyectoPOO\\proyectoPOO\\Inventario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-08T16:56:32.2Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "RedondeadoDeFormularioYBotones.cs",
+              "DocumentMoniker": "D:\\ProyectoCatedraPED-SistemaInventario\\ProyectoCatedraPED-SistemaInventario\\RedondeadoDeFormularioYBotones.cs",
+              "RelativeDocumentMoniker": "ProyectoCatedraPED-SistemaInventario\\RedondeadoDeFormularioYBotones.cs",
+              "ToolTip": "D:\\ProyectoCatedraPED-SistemaInventario\\ProyectoCatedraPED-SistemaInventario\\RedondeadoDeFormularioYBotones.cs",
+              "RelativeToolTip": "ProyectoCatedraPED-SistemaInventario\\RedondeadoDeFormularioYBotones.cs",
+              "ViewState": "AgIAAGIAAAAAAAAAAAAwwIUAAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-08T16:36:56.001Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "D:\\ProyectoCatedraPED-SistemaInventario\\ProyectoCatedraPED-SistemaInventario\\Form1.cs",
+              "RelativeDocumentMoniker": "ProyectoCatedraPED-SistemaInventario\\Form1.cs",
+              "ToolTip": "D:\\ProyectoCatedraPED-SistemaInventario\\ProyectoCatedraPED-SistemaInventario\\Form1.cs*",
+              "RelativeToolTip": "ProyectoCatedraPED-SistemaInventario\\Form1.cs*",
+              "ViewState": "AgIAACkAAAAAAAAAAAAQwD0AAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-08T16:36:56.203Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
