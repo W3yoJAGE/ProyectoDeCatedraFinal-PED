@@ -59,6 +59,7 @@ ProyectoCatedraPED-SistemaInventario/
 │   ├── Index.cs / .Designer.cs       # Dashboard principal (shell de navegación)
 │   ├── Inventario.cs / .Designer.cs  # Gestión del catálogo de productos
 │   ├── AgregarProducto.cs            # Formulario modal para registrar productos
+│   ├── ModificarProducto.cs            # Formulario para modificar productos
 │   ├── OfertasPantalla.cs            # Creación y jerarquía de ofertas
 │   ├── TerminalPV.cs                 # Terminal punto de venta (POS)
 │   └── VistaUsuario.cs               # Catálogo visual para el cliente
